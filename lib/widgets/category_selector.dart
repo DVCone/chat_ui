@@ -8,8 +8,10 @@ class CategorySelector extends StatefulWidget {
 }
 
 class _CategorySelectorState extends State<CategorySelector> {
+  // Main Index Indicator
   int selectedIndex = 0;
 
+  // Category List
   final List<String> categories = [
     'Messages',
     'Online',
@@ -20,6 +22,7 @@ class _CategorySelectorState extends State<CategorySelector> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // Box Style
       height: 85.0,
       color: Theme.of(context).colorScheme.primary,
       child: ListView.builder(
@@ -27,6 +30,7 @@ class _CategorySelectorState extends State<CategorySelector> {
         itemCount: categories.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
+            // Action Button
             onTap: () {
               setState(() {
                 selectedIndex = index;
@@ -37,6 +41,7 @@ class _CategorySelectorState extends State<CategorySelector> {
                 horizontal: 20.0,
                 vertical: 30.0,
               ),
+              // Category Texts
               child: Text(
                 categories[index],
                 style: TextStyle(

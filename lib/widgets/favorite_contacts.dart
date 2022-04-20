@@ -12,11 +12,13 @@ class FavoriteContacts extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
         children: [
+          // Title Section
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                // Title Text
                 const Text(
                   "Favorite Contacts",
                   style: TextStyle(
@@ -26,6 +28,7 @@ class FavoriteContacts extends StatelessWidget {
                     letterSpacing: 1.0,
                   ),
                 ),
+                // More Menu Icon
                 IconButton(
                   onPressed: () {},
                   iconSize: 30.0,
@@ -35,7 +38,9 @@ class FavoriteContacts extends StatelessWidget {
               ],
             ),
           ),
+          // Body Section
           SizedBox(
+            // Box Style
             height: 115.0,
             child: ListView.builder(
               padding: const EdgeInsets.only(left: 5.0),
@@ -44,21 +49,27 @@ class FavoriteContacts extends StatelessWidget {
               itemCount: favorites.length,
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
+                  // Action Button
                   onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => ChatScreen(user: favorites[index]),
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => ChatScreen(user: favorites[index]),
+                    ),
                   ),
-                ),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Column(
                       children: [
+                        // User Avatar Section
                         CircleAvatar(
                           radius: 30.0,
-                          backgroundImage: AssetImage(favorites[index].imageUrl!),
+                          backgroundImage:
+                              AssetImage(favorites[index].imageUrl!),
                         ),
-                        const SizedBox(height: 6.0,),
+                        const SizedBox(
+                          height: 6.0,
+                        ),
+                        // Username Section
                         Text(
                           favorites[index].name!,
                           style: const TextStyle(

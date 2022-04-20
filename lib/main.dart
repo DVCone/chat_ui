@@ -10,10 +10,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     final ThemeData theme = ThemeData();
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ChatUi',
+
+      // Theme Style
       theme: ThemeData(
         colorScheme:
             theme.colorScheme.copyWith(
@@ -21,7 +25,8 @@ class MyApp extends StatelessWidget {
               secondary: const Color(0xFFFEF9EB),
             ),
       ),
-      // theme: theme.,
+      
+      // Home
       home: const HomeScreen(),
     );
   }

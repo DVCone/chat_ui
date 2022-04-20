@@ -15,13 +15,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
+
+      // AppBar
       appBar: AppBar(
+        // Menu Icon
         leading: IconButton(
           onPressed: () {},
           icon: const Icon(Icons.menu),
           iconSize: 30.0,
           color: Colors.white,
         ),
+
+        // Center Title
         centerTitle: true,
         title: const Text(
           "Chat Ui",
@@ -31,6 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         elevation: 0.0,
+
+        // Search Icon
         actions: [
           IconButton(
             onPressed: () {},
@@ -40,9 +47,15 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+
+      // Body
       body: Column(
         children: [
+
+          // Categories Section
           const CategorySelector(),
+
+          // Main Body Section
           Expanded(
             child: Container(
               height: 500.0,
@@ -55,7 +68,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Column(
                 children: const [
+                  // Favorites Section
                   FavoriteContacts(),
+
+                  // chat List Section
                   RecentChats(),
                 ],
               ),

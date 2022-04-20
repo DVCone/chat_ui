@@ -12,14 +12,17 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  // chat message section
   _buildMessage(Message message, bool isMe) {
     final Container msg = Container(
       margin: isMe
+          // current user margin
           ? const EdgeInsets.only(
               top: 8.0,
               bottom: 8.0,
               left: 80.0,
             )
+          // user chat margin
           : const EdgeInsets.only(
               top: 8.0,
               bottom: 8.0,
@@ -27,21 +30,25 @@ class _ChatScreenState extends State<ChatScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
       width: MediaQuery.of(context).size.width * 0.75,
       decoration: isMe
+          // current user message box style
           ? BoxDecoration(
               color: Theme.of(context).colorScheme.secondary,
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(15.0),
                   bottomLeft: Radius.circular(15.0)),
             )
+          // userchat message box style
           : const BoxDecoration(
               color: Color(0xFFFFEFEE),
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(15.0),
                   bottomRight: Radius.circular(15.0)),
             ),
+      // Chat message section
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // time section
           Text(
             message.time!,
             style: const TextStyle(
@@ -51,6 +58,7 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
           const SizedBox(height: 5.0),
+          // message text section
           Text(
             message.text!,
             style: const TextStyle(
@@ -67,6 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
       return msg;
     }
 
+    // favorite message section
     return Row(
       children: [
         msg,
@@ -84,6 +93,7 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
+  // Typing Section
   _buildMessageComposer() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -91,12 +101,14 @@ class _ChatScreenState extends State<ChatScreen> {
       color: Colors.white,
       child: Row(
         children: [
+          // Upload Photo Section
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.photo),
             iconSize: 25.0,
             color: Theme.of(context).colorScheme.primary,
           ),
+          // TextField Section
           Expanded(
             child: TextField(
               textCapitalization: TextCapitalization.sentences,
@@ -106,6 +118,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
           ),
+          // Send Section
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.send),
@@ -121,7 +134,10 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
+
+      // AppBar
       appBar: AppBar(
+        // Center title
         centerTitle: true,
         title: Text(
           widget.user!.name!,
@@ -131,6 +147,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ),
         elevation: 0.0,
+        // more menu icon
         actions: [
           IconButton(
             onPressed: () {},
@@ -140,12 +157,14 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ],
       ),
+      // body section
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Column(
           children: [
             Expanded(
               child: Container(
+                // background box decoration
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -159,6 +178,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     topRight: Radius.circular(30),
                   ),
                   child: ListView.builder(
+                      // chat message style
                       physics: const BouncingScrollPhysics(),
                       reverse: true,
                       padding: const EdgeInsets.only(top: 15.0),
@@ -167,11 +187,14 @@ class _ChatScreenState extends State<ChatScreen> {
                         final Message message = messages[index];
                         final bool isMe =
                             message.sender!.id! == currentUser.id!;
+                        // chat message section
                         return _buildMessage(message, isMe);
                       }),
                 ),
               ),
             ),
+
+            // Typing Section
             _buildMessageComposer(),
           ],
         ),

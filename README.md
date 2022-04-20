@@ -1,16 +1,25 @@
-# chatui
+![preview.jpg](https://github.com/DVCone/chatui/blob/master/preview.png)
 
-A new Flutter project.
+# ChatUi
 
-## Getting Started
+Hi, Thank you for comming!
 
-This project is a starting point for a Flutter application.
+In this learning project, I have got lot's of insight about more flutter technique to make code more advence in using data processing.
 
-A few resources to get you started if this is your first Flutter project:
+I think ChatUi have simple consept but, when I work in this project I got many challanges to arrage the Grid perfectly.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+And I really enjoy working on ChatUi project because it's really vanilla set up, You can practice too in this project with your own and develope this project into newest framework version, feel free to use my code.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# System Requirement :
+- Dart v.2.16
+- Flutter v2.10
+
+# Dependency Requirement :
+(none)
+
+# What I learn in this project :
+1. I learn how to use `colorScheme` in `ThemeData`. <br/>
+[see more in `main.dart`]
+2. I learn about making dummy data model. <br/>
+[see more in `lib/models/`]
+3. 
