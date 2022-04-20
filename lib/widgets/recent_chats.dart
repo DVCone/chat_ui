@@ -1,4 +1,5 @@
 import 'package:chatui/models/message_model.dart';
+import 'package:chatui/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 class RecentChats extends StatelessWidget {
@@ -23,17 +24,29 @@ class RecentChats extends StatelessWidget {
           ),
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
-              itemCount: chats.length,
-              itemBuilder: (BuildContext context, int index) {
-                final Message chat = chats[index];
-                return Container(
-                  margin:
-                      const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0),
+            itemCount: chats.length,
+            itemBuilder: (BuildContext context, int index) {
+              final Message chat = chats[index];
+              return GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ChatScreen(user: chat.sender!),
+                  ),
+                ),
+                child: Container(
+                  margin: const EdgeInsets.only(
+                    top: 5.0, 
+                    bottom: 5.0, 
+                    right: 20.0,
+                  ),
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 10.0),
+                    horizontal: 20.0, 
+                    vertical: 10.0,
+                  ),
                   decoration: BoxDecoration(
                     color:
-                        chat.unread! ? const Color(0xFFFFEFEE) : Colors.white,
+                      chat.unread! ? const Color(0xFFFFEFEE) : Colors.white,
                     borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(20.0),
                       bottomRight: Radius.circular(20.0),
@@ -46,7 +59,8 @@ class RecentChats extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             radius: 30.0,
-                            backgroundImage: AssetImage(chat.sender!.imageUrl!),
+                            backgroundImage:
+                              AssetImage(chat.sender!.imageUrl!),
                           ),
                           const SizedBox(
                             width: 15.0,
@@ -66,7 +80,8 @@ class RecentChats extends StatelessWidget {
                                 height: 5.0,
                               ),
                               SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.45,
+                                width:
+                                  MediaQuery.of(context).size.width * 0.45,
                                 child: Text(
                                   chat.text!,
                                   style: const TextStyle(
@@ -98,8 +113,12 @@ class RecentChats extends StatelessWidget {
                             width: 40.0,
                             height: 20.0,
                             decoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.primary,
-                                borderRadius: BorderRadius.circular(30.0)),
+                              color: Theme.of(context)
+                                .colorScheme
+                                .primary,
+                              borderRadius:
+                                BorderRadius.circular(30.0),
+                            ),
                             alignment: Alignment.center,
                             child: const Text(
                               'NEW',
@@ -114,8 +133,10 @@ class RecentChats extends StatelessWidget {
                       )
                     ],
                   ),
-                );
-              }),
+                ),
+              );
+            }
+          ),
         ),
       ),
     );
